@@ -35,7 +35,7 @@ class RedirectIfAuthenticated
             if ($request->ajax()) {
                 return response('Unauthorized.', 401); // Or, return a response that causes client side js to redirect to '/routesPrefix/myIdp1/login'
             } else {
-                $saml2Auth = new Saml2Auth(Saml2Auth::loadOneLoginAuthFromIpdConfig('mytestidp1'));
+                $saml2Auth = new Saml2Auth(Saml2Auth::loadOneLoginAuthFromIpdConfig('aad'));
                 return $saml2Auth->login(URL::full());
             }
         }
