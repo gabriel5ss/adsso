@@ -15,10 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Route::group([ 'prefix' => '/saml2' ], function () {
-	Route::get('/aad/teste', function (){
+// Route::domain('ad.adsso.test')->group(function () {
+//     Route::get('/aad/teste', function (){
+//         return view('homePage');
+//     });
+
+//     Route::get('/aad/dashboard', function (){
+//         return view('dashboard');
+//     });
+// });
+
+Route::middleware(['saml', 'auth'])->group(function(){
+    Route::get('saml2/aad/teste', function (){
         return view('homePage');
     });
 
@@ -26,3 +36,13 @@ Route::group([ 'prefix' => '/saml2' ], function () {
         return view('dashboard');
     });
 });
+
+// Route::group([ 'prefix' => '/saml2' ], function () {
+// 	Route::get('/aad/teste', function (){
+//         return view('homePage');
+//     });
+
+//     Route::get('/aad/dashboard', function (){
+//         return view('dashboard');
+//     });
+// });

@@ -1,0 +1,26 @@
+arquivo > saml2_settings.php {
+    aqui estão as configurações de rotas e nomes de serviço;
+    não é necesario nenhuma configuração, a menos que sejá necessario adicionar mais IdpName;
+}
+
+arquivo > SAML2ServiceProvider.php {
+    esse é o provider que gerencia o login do usuario e cria a sessão;
+    gerencia também o logout;
+    para funcionar é necesario ter um banco de dados local (na aplicação) para armazenar a sessão;
+    pode realizar alterações no banco de dados e na forma de cadastro do usuario;
+    prestar atenção nas informações vindas do AD;
+}
+
+arquivo > aad_idp_settings.php {
+    aqui estão as configurações do idp;
+    não é necesario nenhuma alteração;
+}
+
+arquivo > VerifyCsrfToken.php {
+    adicionar "except" para a rota /acs;
+    para não gerar erro de csrf pois o token vai ser diferente pois está vindo do AD;
+}
+
+arquivo > RedirectIfAuthenticated.php {
+    foi modificado, verificar antes de alterar;
+}

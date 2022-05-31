@@ -70,7 +70,10 @@ class SAML2ServiceProvider extends ServiceProvider
             $messageId = $event->getSaml2Auth()->getLastMessageId();
             // Add your own code preventing reuse of a $messageId to stop replay attacks
         
+            // $user vai receber os dados vindos do AD;
             $user = $event->getSaml2User();
+
+            // $userData vai receber os dados vindos do $user, modifique da forma que for necessaria;
             $userData = [
                 'id' => $user->getUserId(),
                 'attributes' => $user->getAttributes(),
@@ -79,18 +82,23 @@ class SAML2ServiceProvider extends ServiceProvider
             
             // dd($userData);
 
+            //pesquisar se o id está salvo no banco
             $laravelUser = User::where('ad_id', $userData['id'])->first(); //find user by ID or attribute
+            // if it does not exist create it and go on  or show an error message
 
             // dd($laravelUser);
 
             if($laravelUser != null){
 
+                //se existir cria o login;
                 // dd('entrou no != null');
                 Auth::login($laravelUser);
                 
             } else {
-
+                // se não, cria o usuario local
                 // dd('entrou no else');
+                //criação do usuario, verificar as informações que serão necessarias
+                //para a utilização do sistema
                 $user = User::create([
                     'name' => 'SSO Example 2',
                     'email' => 'sso@example 2.com',
@@ -102,7 +110,6 @@ class SAML2ServiceProvider extends ServiceProvider
 
                 Auth::login($user);
             }
-            // if it does not exist create it and go on  or show an error message
             
             // dd(Auth::id());
         });
