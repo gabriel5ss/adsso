@@ -77,12 +77,26 @@ class SAML2ServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
             
-            dd($userData);
+            // dd($userData);
 
-            $laravelUser = User::find($userData['id']); //find user by ID or attribute
+            $laravelUser = User::where([
+                'ad_id' => $userData['id']
+            ]); //find user by ID or attribute
+
+            if(!$laravelUser){
+                $user = User::create([
+                    'name' => $userData['attributes']['http://schemas.microsoft.com/identity/claims/displayname'],
+                    'email' => $userData['attributes'],
+                    'ad_id' => $userData['id']['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
+                    'password' => $userData['assertion'],
+                ]);
+
+                Auth::login($user);
+            } else {
+                Auth::login($laravelUser);
+            }
             //if it does not exist create it and go on  or show an error message
-            Auth::login($laravelUser);
-
+            
             dd(Auth::id());
         });
 
