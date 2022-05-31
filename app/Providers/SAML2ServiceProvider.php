@@ -85,20 +85,20 @@ class SAML2ServiceProvider extends ServiceProvider
 
             if($laravelUser != null){
 
-                dd('entrou no != null');
+                // dd('entrou no != null');
                 Auth::login($laravelUser);
                 
             } else {
 
                 // dd('entrou no else');
                 $user = User::create([
-                    'name' => 'SSO Example',
-                    'email' => 'sso@example.com',
+                    'name' => 'SSO Example 2',
+                    'email' => 'sso@example 2.com',
                     'ad_id' => $userData['id'],
                     'password' => Hash::make('Batata123@'),
                 ]);
 
-                dd($user);
+                // dd($user);
 
                 Auth::login($user);
             }
