@@ -47,7 +47,7 @@ return $settings = array(
     /**
      * Where to redirect after login if no other option was provided
      */
-    'loginRoute' => '/dashboard',
+    'loginRoute' => '/aad/dashboard',
 
     /**
      * Where to redirect after login if no other option was provided

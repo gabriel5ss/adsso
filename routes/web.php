@@ -21,4 +21,8 @@ Route::group([ 'prefix' => '/saml2' ], function () {
 	Route::get('/aad/teste', function (){
         return view('homePage');
     });
+
+    Route::get('/aad/dashboard', function (){
+        return view('dashboard');
+    });
 });
