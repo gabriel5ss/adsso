@@ -77,7 +77,7 @@ class SAML2ServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
             
-            dd($userData['attributes']['http://schemas.microsoft.com/identity/claims/displayname'][0]);
+            // dd($userData['attributes']['http://schemas.microsoft.com/identity/claims/displayname'][0]);
 
             $laravelUser = User::where([
                 'ad_id' => $userData['id']
@@ -91,9 +91,9 @@ class SAML2ServiceProvider extends ServiceProvider
                 
             } else {
                 $user = User::create([
-                    'name' => $userData['attributes']['http://schemas.microsoft.com/identity/claims/displayname'],
-                    'email' => $userData['attributes'],
-                    'ad_id' => $userData['id']['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
+                    'name' => $userData['attributes']['http://schemas.microsoft.com/identity/claims/displayname'][0],
+                    'email' => $userData['attributes']['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'][0],
+                    'ad_id' => $userData['id'],
                     'password' => $userData['assertion'],
                 ]);
 
