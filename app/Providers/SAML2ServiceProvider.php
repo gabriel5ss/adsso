@@ -89,13 +89,13 @@ class SAML2ServiceProvider extends ServiceProvider
                 Auth::login($laravelUser);
                 
             } else {
-                
-                dd('entrou no else');
+
+                // dd('entrou no else');
                 $user = User::create([
-                    'name' => $userData['attributes']['http://schemas.microsoft.com/identity/claims/displayname'][0],
-                    'email' => $userData['attributes']['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'][0],
+                    'name' => 'SSO Example',
+                    'email' => 'sso@example.com',
                     'ad_id' => $userData['id'],
-                    'password' => $userData['assertion'],
+                    'password' => Hash::make('Batata123@'),
                 ]);
 
                 dd($user);
