@@ -85,7 +85,7 @@ class SAML2ServiceProvider extends ServiceProvider
 
             // dd($userData);
             
-            // dd($userData['attributes']['http://schemas.microsoft.com/identity/claims/tenantid'][0]);
+            dd($userData['name'][0]);
 
             //pesquisar se o id está salvo no banco
             $laravelUser = User::where('ad_id', $userData['id'])->first(); //find user by ID or attribute
