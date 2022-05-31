@@ -79,11 +79,11 @@ class SAML2ServiceProvider extends ServiceProvider
             
             dd($userData);
 
-            // $laravelUser = User::where([
-            //     'ad_id' => $userData['id']
-            // ]); //find user by ID or attribute
+            $laravelUser = User::where([
+                'ad_id' => $userData['id']
+            ]); //find user by ID or attribute
 
-            // // dd($laravelUser);
+            dd($laravelUser);
 
             // if(!$laravelUser){
             //     $user = User::create([
