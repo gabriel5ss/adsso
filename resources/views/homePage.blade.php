@@ -22,11 +22,8 @@
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Auth::user())
-                <p>{{ Auth::user() }}</p>
-            @else
-                <p>errou</p>
-            @endif
+            <p>{{ Auth::user() }}</p>
+            <p>{{ auth()->user() }}</p>
         </div>
     </body>
 </html>
