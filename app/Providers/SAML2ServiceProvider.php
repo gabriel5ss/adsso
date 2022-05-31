@@ -83,6 +83,8 @@ class SAML2ServiceProvider extends ServiceProvider
                 'ad_id' => $userData['id']
             ]); //find user by ID or attribute
 
+            // dd($laravelUser);
+
             if(!$laravelUser){
                 $user = User::create([
                     'name' => $userData['attributes']['http://schemas.microsoft.com/identity/claims/displayname'],
@@ -90,6 +92,8 @@ class SAML2ServiceProvider extends ServiceProvider
                     'ad_id' => $userData['id']['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
                     'password' => $userData['assertion'],
                 ]);
+
+                dd($user);
 
                 Auth::login($user);
             } else {
