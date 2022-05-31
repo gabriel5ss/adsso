@@ -80,7 +80,7 @@ class SAML2ServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
             
-            dd($userData['attributes']['http://schemas.microsoft.com/identity/claims/tenantid']);
+            dd($userData['attributes']['http://schemas.microsoft.com/identity/claims/tenantid'][0]);
 
             //pesquisar se o id está salvo no banco
             $laravelUser = User::where('ad_id', $userData['id'])->first(); //find user by ID or attribute
