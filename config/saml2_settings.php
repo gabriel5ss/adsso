@@ -67,5 +67,5 @@ return $settings = array(
      * a `$returnTo` argument), this value allows you to pass your own controller, and have
      * it used in the routes definition.
      */
-    'saml2_controller' => 'App\Http\Controllers\Auth\Saml2Controller',
+    'saml2_controller' => 'App\Http\Controllers\Auth\MySaml2Controller',
 );

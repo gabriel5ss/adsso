@@ -7,7 +7,7 @@ use Aacotroneo\Saml2\Saml2Auth;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 
-class Saml2Controller extends Controller
+class BakSaml2Controller extends Controller
 {
     /**
      * Generate local sp metadata.

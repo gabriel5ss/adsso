@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use Aacotroneo\Saml2\Events\Saml2LoginEvent;
+use Aacotroneo\Saml2\Http\Controllers\Saml2Controller;
 use Aacotroneo\Saml2\Saml2Auth;
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 
-class Saml2Controller extends Controller
+class MySaml2Controller extends Saml2Controller
 {
     /**
      * Generate local sp metadata.
@@ -99,6 +99,9 @@ class Saml2Controller extends Controller
      */
     public function login(Saml2Auth $saml2Auth)
     {
+        // $loginRedirect = '/dashboard'; // Determine redirect URL
+        // dd($saml2Auth);
+        // $this->saml2Auth->login($loginRedirect);
         $saml2Auth->login(config('saml2_settings.loginRoute'));
     }
 }
