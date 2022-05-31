@@ -81,7 +81,7 @@ class SAML2ServiceProvider extends ServiceProvider
 
             $laravelUser = User::where('ad_id', $userData['id'])->first(); //find user by ID or attribute
 
-            dd($laravelUser);
+            // dd($laravelUser);
 
             if($laravelUser){
 
