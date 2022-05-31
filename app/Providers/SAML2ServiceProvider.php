@@ -76,9 +76,12 @@ class SAML2ServiceProvider extends ServiceProvider
                 'attributes' => $user->getAttributes(),
                 'assertion' => $user->getRawSamlAssertion()
             ];
-                $laravelUser = 2; //find user by ID or attribute
-                //if it does not exist create it and go on  or show an error message
-                Auth::loginUsingId($userData['id']);
+            
+            dd($userData);
+
+            $laravelUser = 2; //find user by ID or attribute
+            //if it does not exist create it and go on  or show an error message
+            Auth::loginUsingId($userData['id']);
         });
 
         Event::listen('Aacotroneo\Saml2\Events\Saml2LogoutEvent', function ($event) {
