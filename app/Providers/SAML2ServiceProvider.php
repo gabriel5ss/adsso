@@ -77,7 +77,7 @@ class SAML2ServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
             
-            dd($userData);
+            // dd($userData);
 
             $laravelUser = User::where([
                 'ad_id' => $userData['id']
