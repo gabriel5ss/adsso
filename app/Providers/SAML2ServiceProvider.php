@@ -74,6 +74,7 @@ class SAML2ServiceProvider extends ServiceProvider
             $user = $event->getSaml2User();
 
             // $userData vai receber os dados vindos do $user, modifique da forma que for necessaria;
+            // verificar a existencia de mais links com informações se possivel;
             $userData = [
                 'id' => $user->getUserId(),
                 'username' => $user->getAttribute("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
