@@ -83,17 +83,17 @@ class SAML2ServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
 
-            dd($userData);
+            // dd($userData);
             
-            dd($userData['name'][0]);
+            // dd($userData['first_name'][0]);
 
             //pesquisar se o id está salvo no banco
             $laravelUser = User::where('ad_id', $userData['id'])->first(); //find user by ID or attribute
             // if it does not exist create it and go on  or show an error message
 
             // dd($laravelUser);
-            $name = $userData['name'][0];
-            $email = $userData['email'][0];
+            // $name = $userData['first_name'][0];
+            // $email = $userData['email'][0];
 
             if($laravelUser != null){
 
@@ -107,8 +107,8 @@ class SAML2ServiceProvider extends ServiceProvider
                 //criação do usuario, verificar as informações que serão necessarias
                 //para a utilização do sistema
                 $user = User::create([
-                    'name' => $name,
-                    'email' => $email,
+                    'name' => $userData['first_name'][0],
+                    'email' => $userData['email'][0],
                     'ad_id' => $userData['id'],
                     'password' => Hash::make('Batata123@'),
                 ]);
