@@ -83,7 +83,7 @@ class SAML2ServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
 
-            // dd($userData);
+            dd($userData);
             
             dd($userData['name'][0]);
 
