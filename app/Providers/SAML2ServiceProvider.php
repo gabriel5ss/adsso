@@ -89,6 +89,8 @@ class SAML2ServiceProvider extends ServiceProvider
                 Auth::login($laravelUser);
                 
             } else {
+                
+                dd('entrou no else');
                 $user = User::create([
                     'name' => $userData['attributes']['http://schemas.microsoft.com/identity/claims/displayname'][0],
                     'email' => $userData['attributes']['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'][0],
