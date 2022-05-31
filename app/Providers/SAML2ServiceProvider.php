@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 
 class SAML2ServiceProvider extends ServiceProvider
@@ -78,6 +79,11 @@ class SAML2ServiceProvider extends ServiceProvider
                 $laravelUser = 2; //find user by ID or attribute
                 //if it does not exist create it and go on  or show an error message
                 Auth::login($laravelUser);
+        });
+
+        Event::listen('Aacotroneo\Saml2\Events\Saml2LogoutEvent', function ($event) {
+            Auth::logout();
+            Session::save();
         });
     }
 }
