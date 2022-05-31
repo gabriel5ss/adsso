@@ -83,7 +83,7 @@ class SAML2ServiceProvider extends ServiceProvider
                 'assertion' => $user->getRawSamlAssertion()
             ];
 
-            dd($userData);
+            // dd($userData);
             
             // dd($userData['attributes']['http://schemas.microsoft.com/identity/claims/tenantid'][0]);
 
@@ -105,8 +105,8 @@ class SAML2ServiceProvider extends ServiceProvider
                 //criação do usuario, verificar as informações que serão necessarias
                 //para a utilização do sistema
                 $user = User::create([
-                    'name' => 'SSO Example 2',
-                    'email' => 'sso@example 2.com',
+                    'name' => $userData['name'][0],
+                    'email' => $userData['email'][0],
                     'ad_id' => $userData['id'],
                     'password' => Hash::make('Batata123@'),
                 ]);
