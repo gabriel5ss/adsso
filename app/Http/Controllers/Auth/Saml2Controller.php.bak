@@ -99,7 +99,6 @@ class Saml2Controller extends Controller
      */
     public function login(Saml2Auth $saml2Auth)
     {
-        dd('route');
         $saml2Auth->login(config('saml2_settings.loginRoute'));
     }
 }

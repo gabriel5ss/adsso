@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/saml2/aad/teste', function (){
-    return view('homePage');
+Route::group([ 'prefix' => '/saml2' ], function () {
+	Route::get('/aad/teste', function (){
+        return view('homePage');
+    });
 });
