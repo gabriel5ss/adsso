@@ -104,7 +104,7 @@ class SAML2ServiceProvider extends ServiceProvider
             }
             // if it does not exist create it and go on  or show an error message
             
-            dd(Auth::id());
+            // dd(Auth::id());
         });
 
         Event::listen('Aacotroneo\Saml2\Events\Saml2LogoutEvent', function ($event) {
