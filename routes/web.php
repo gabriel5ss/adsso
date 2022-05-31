@@ -32,7 +32,7 @@ Route::middleware(['saml', 'auth'])->group(function(){
         return view('homePage');
     });
 
-    Route::get('/aad/dashboard', function (){
+    Route::get('saml2/aad/dashboard', function (){
         return view('dashboard');
     });
 });
