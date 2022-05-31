@@ -81,22 +81,23 @@ class SAML2ServiceProvider extends ServiceProvider
 
             $laravelUser = User::where([
                 'ad_id' => $userData['id']
-            ]); //find user by ID or attribute
+            ])->first(); //find user by ID or attribute
 
-            dd($laravelUser);
+            // dd($laravelUser);
 
-            // if(!$laravelUser){
-            //     $user = User::create([
-            //         'name' => $userData['attributes']['http://schemas.microsoft.com/identity/claims/displayname'],
-            //         'email' => $userData['attributes'],
-            //         'ad_id' => $userData['id']['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
-            //         'password' => $userData['assertion'],
-            //     ]);
+            if(!$laravelUser){
+                $user = User::create([
+                    'name' => $userData['attributes']['http://schemas.microsoft.com/identity/claims/displayname'],
+                    'email' => $userData['attributes'],
+                    'ad_id' => $userData['id']['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'],
+                    'password' => $userData['assertion'],
+                ]);
 
-            //     dd($user);
+                dd($user);
 
-            //     Auth::login($user);
-            // } else {
+                Auth::login($user);
+            } 
+            // else {
             //     Auth::login($laravelUser);
             // }
             //if it does not exist create it and go on  or show an error message
