@@ -83,8 +83,9 @@ class SAML2ServiceProvider extends ServiceProvider
 
             // dd($laravelUser);
 
-            if($laravelUser){
+            if($laravelUser != null){
 
+                dd('entrou no != null');
                 Auth::login($laravelUser);
                 
             } else {
