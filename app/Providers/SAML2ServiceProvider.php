@@ -76,10 +76,10 @@ class SAML2ServiceProvider extends ServiceProvider
             // $userData vai receber os dados vindos do $user, modifique da forma que for necessaria;
             $userData = [
                 'id' => $user->getUserId(),
-                'username' => $user->getAttributes("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
-                'email' => $user->getAttributes("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
-                'first_name' => $user->getAttributes("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname"),
-                'last_name' => $user->getAttributes("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname"),
+                'username' => $user->getAttribute("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
+                'email' => $user->getAttribute("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"),
+                'first_name' => $user->getAttribute("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname"),
+                'last_name' => $user->getAttribute("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname"),
                 'assertion' => $user->getRawSamlAssertion()
             ];
 
